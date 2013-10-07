@@ -1,0 +1,9 @@
+
+
+/* Board positioning in the web page */
+div #board{
+    display: inline-block;
+    position: fixed;
+    margin: 300px 200px 300px 200px;
+    /*background-color: #a3a3a3;*/
+}
