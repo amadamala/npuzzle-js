@@ -28,6 +28,41 @@ $(document).ready(function(){
         // Hide the empty cell.
         $("#cell-0").invisible();
 
+
+
+
+        //===============================================
+        // Handle the clicks
+        // ==============================================
+        function notifyClick(event) {
+            var $cell = $(this);
+
+            var numberOnCell = parseInt($cell.text(), 10);
+
+            var row = getRowNumber(numberOnCell);
+            var col = getColumnNumber(numberOnCell);
+
+            // console.log("row: " + row + ", column: " + col);
+            // console.log("rowId: " + getRowId(row) + ", cellId: " + getCellId(row, col));
+            
+            var isValid = isValidClick(numberOnCell);
+            
+
+            console.log("isValidClick: " + isValid);
+        }
+        
+        function isValidClick(numberOnCell) {
+            var emptyRow = getEmptyCellRow(),           emptyCol = getEmptyCellColumn();
+            var clickRow = getRowNumber(numberOnCell),  clickCol = getColumnNumber(numberOnCell);
+            
+            if(emptyRow == clickRow || emptyCol == clickCol) {
+                return true;    
+            } 
+            
+            return false;
+        }        
+        
+        
         
         /* Initializes the board to solvable state.*/
         function initializeBoardState() {                                   
@@ -67,15 +102,32 @@ $(document).ready(function(){
 
         
         function getEmptyCellNumber() {
+            return getIndexOf(NUMBER_ON_EMPTY_CELL);
+        }
+        
+        
+        function getIndexOf(numberOnCell) {
             // Set the empty cell number and keep track of it.
             for(var i=0; i<boardState.length; i++) {
-                emptyCellNumber = boardState[i];
-                if(boardState[i] == 0) {
-                    emptyCellNumber = i;
+                if(boardState[i] == numberOnCell) {
+                    console.log("emptyCellNumber: " + emptyCellNumber);
+                    return i;
                 }
             }
-            console.log("emptyCellNumber: " + emptyCellNumber);
-            return emptyCellNumber;
+        }
+        
+        function NumberFormatException(message) {
+            this.message = message;
+            this.name = "NumberFormatException";
+        }
+        
+        
+        function getEmptyCellRow() {
+            return getRowNumber(getEmptyCellNumber());
+        } 
+        
+        function getEmptyCellColumn() {
+            return getColumnNumber(getEmptyCellNumber());
         }
         
         function shuffleArray(array) {
@@ -89,20 +141,6 @@ $(document).ready(function(){
             return array;
         }
         
-        // load N x N board
-        function notifyClick(event) {
-            var $cell = $(this);
-            
-            var numberOnCell = parseInt($cell.text(), 10);
-            
-            var row = getRowNumber(numberOnCell);
-            var col = getColumnNumber(numberOnCell);
-            
-            // console.log("row: " + row + ", column: " + col);
-            // console.log("rowId: " + getRowId(row) + ", cellId: " + getCellId(row, col));
-            
-            
-        }
         
         /* Get DOM id of the row */
         function getRowId(numberOnCell) {
