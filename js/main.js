@@ -3,7 +3,7 @@ $(document).ready(function(){
 		
     var DIM = 4, WIDTH= 80, HEIGHT = 80;
     var boardState = [0, 1, 2, 3, 4, 5 ,6 ,7, 8, 9, 10, 11, 12, 13, 14, 15];
-    var emptyCellNumber;
+    var emptyCellNumber, NUMBER_ON_EMPTY_CELL=0;
     
     $(function(){
 
@@ -46,15 +46,13 @@ $(document).ready(function(){
             // console.log("rowId: " + getRowId(row) + ", cellId: " + getCellId(row, col));
             
             var isValid = isValidClick(numberOnCell);
-            
-
             console.log("isValidClick: " + isValid);
         }
         
         function isValidClick(numberOnCell) {
-            var emptyRow = getEmptyCellRow(),           emptyCol = getEmptyCellColumn();
+            var emptyRow = getRowNumber(NUMBER_ON_EMPTY_CELL), emptyCol = getColumnNumber(NUMBER_ON_EMPTY_CELL);
             var clickRow = getRowNumber(numberOnCell),  clickCol = getColumnNumber(numberOnCell);
-            
+            console.log("number on cell: " + numberOnCell + ", erow: " + emptyRow + ", ecol: " + emptyCol + ", cRow: " + clickRow + ", cCol: " + clickCol);
             if(emptyRow == clickRow || emptyCol == clickCol) {
                 return true;    
             } 
@@ -110,7 +108,6 @@ $(document).ready(function(){
             // Set the empty cell number and keep track of it.
             for(var i=0; i<boardState.length; i++) {
                 if(boardState[i] == numberOnCell) {
-                    console.log("emptyCellNumber: " + emptyCellNumber);
                     return i;
                 }
             }
@@ -152,11 +149,11 @@ $(document).ready(function(){
         }
         
         function getRowNumber(numberOnCell) {
-            return Math.floor(numberOnCell / DIM);
+            return Math.floor(getIndexOf(numberOnCell) / DIM);
         }
         
         function getColumnNumber(numberOnCell) {
-            return (numberOnCell % DIM);
+            return (getIndexOf(numberOnCell) % DIM);
         }
         
     });
