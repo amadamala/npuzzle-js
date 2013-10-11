@@ -1,131 +1,41 @@
-# Global gitignore for hybris repository
-#
-
-# General files to ignore
-# 
+# Compiled source #
+###################
+*.com
 *.class
-*.ear
-*.war
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
 *.log
+*.sql
+*.sqlite
 
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Allow *.jar files
-
-# Hybris specific files / directories to ignore
-# Note the wild card here represents the hybris extension
-#
-bin/custom/*/.externalToolBuilders/*
-bin/custom/*/build.xml
-bin/custom/*/extensioninfo.xsd
-bin/custom/*/platformhome.properties
-bin/custom/*/hmc/resources/hmc.xsd
-bin/custom/*/resources/items.xsd
-bin/custom/*/hmc/bin/*
-
-bin/custom/services/web/webroot/WEB-INF/lib/*.jar
-
-bin/custom/gcomStore/web/webroot/WEB-INF/build.properties
-
-# generated from yunit junit tests
-#
-bin/custom/*/junittestcases*.properties
-bin/custom/gcomStore/web/webroot/js/messages.json
-grainger-ant/target/**
-grainger-ant/.project
-grainger-ant/.classpath
-grainger-ant/.settings/**
-
-# General Hybris directories to ignore
-# NOTE be careful with directory ignores.  For example:
-# data or data/ will ignore stuff like com.grainger.price.data
-# when we only want to ignore the top level data directory...
-#
-/bin/platform
-/bin/ext-accelerator
-/bin/ext-channel
-/bin/ext-commerce
-/bin/ext-content
-/bin/ext-data
-/bin/ext-template
-/bin/ext-hybris
-/bin/ext-accelerator
-/bin/ext-channel
-/bin/ext-commerce
-/bin/ext-content
-/bin/ext-data
-/bin/ext-template
-bin/custom/gcomStoreComponents/src/com/grainger/jalo/*
-gensrc
-classes
-doc
-schema
-
-# Attempt to ignore jalo generated classes.  To do this we need to 
-# specify an exact path and then exclude files that should be sourced
-# such as the manager class and test classes created for each extension
-bin/custom/*/*/com/grainger/*/jalo/*.java
-bin/custom/*/*/com/grainger/*/jalo/*/*.java
-bin/custom/*/*/com/grainger/*/jalo/*/*/*.java
-bin/custom/*/*/com/grainger/*/jalo/*/*/*/*.java
-bin/custom/*/*/com/grainger/*/*/jalo/*.java
-!*Manager.java
-!*Test.java
-!*Factory.java
-
-#Adding new gcomStoreComponents
-bin/custom/gcomStoreComponents/src/com/grainger/store/jalo/*
-bin/custom/gcomStoreComponents/src/com/grainger/jalo/*
-
-#Adding new gcomStore case
-bin/custom/gcomStore/src/com/grainger/store/jalo/*
-bin/custom/gcomStore/src/de/hybris/platform/jalo/*
-
-# Ignore dojo build files at build location and also files which are deployed to webapps
-dojo/build
-bin/custom/gcomStore/web/webroot/js/dojo/*
-!bin/custom/gcomStore/web/webroot/js/dojo/README
-# Need to do the CSS files individually for the moment
-bin/custom/gcomStore/web/webroot/stylesheets/checkout-min.css
-bin/custom/gcomStore/web/webroot/stylesheets/components.css
-bin/custom/gcomStore/web/webroot/stylesheets/oms-min.css
-bin/custom/gcomStore/web/webroot/stylesheets/account.css
-
-
-# ignore generated webservices configuration xml file(s)
-
-
-# Ignore top level directories, e.g. directories at the same level as the .gitignore
-/data
-/log
-/temp
-
-# Ignore hybris webservice module generated files
-generated-services-web-spring.xml
-core-webservices.jar
-
-# Eclipse files / directories to ignore
-#
-# Allow, .settings, .classpath and .project
-.metadata
-.pmd
-.ruleset
-.springBeans
-
-
-#Other generated files to ignore
-config/system.properties
-
-bin/custom/gcomStore/web/webroot/stylesheets/site.css
-bin/custom/gcomStore/web/webroot/WEB-INF/build.properties
-
-#ignore everything but cibuild/build.xml
-cibuild/*
-!cibuild/build.xml
-
-# ignoring generated files for cockpits
-bin/custom/gcomStore/web/webroot/cmscockpit/*
-bin/custom/gcomStore/web/webroot/cockpit/*
-bin/custom/gcomStoreComponents/web/webroot/cmscockpit/*
-bin/custom/gcomStoreComponents/web/webroot/cockpit/*
-
-
+# Idea specific files
+######################
+.idea/
