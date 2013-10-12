@@ -1,6 +1,4 @@
 $(document).ready(function(){
-	console.log('inside document ready');
-		
     var DIM = 4, WIDTH= 80, HEIGHT = 80;
     var board = [0, 1, 2, 3, 4, 5 ,6 ,7, 8, 9, 10, 11, 12, 13, 14, 15];
     var emptyCellNumber, NUMBER_ON_EMPTY_CELL=0;
