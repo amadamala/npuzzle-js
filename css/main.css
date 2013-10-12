@@ -4,6 +4,6 @@
 div #board{
     display: inline-block;
     position: fixed;
-    margin: 300px 200px 300px 200px;
+    margin: 100px 200px 100px 200px;
     /*background-color: #a3a3a3;*/
 }
